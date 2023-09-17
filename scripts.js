@@ -116,6 +116,8 @@ function removeBook(event) {
   bookCard.remove();
 
   saveToLocalStorage(); // Guarda la biblioteca actualizada en localStorage
+  displayBooks(); // Vuelve a mostrar la biblioteca actualizada
+
 
 }
 
