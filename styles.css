@@ -1,0 +1,130 @@
+/* Estilos generales para la página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* ... (estilos previos) ... */
+
+/* Botón Toggle Read Status */
+.toggle-read-status {
+    appearance: none; /* Elimina la apariencia estándar del input */
+    outline: none;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-read-status:checked {
+    background: #007BFF;
+}
+
+.toggle-read-status::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-read-status:checked::before {
+    transform: translateX(25px);
+}
+
+/* Botón Remove */
+.remove-book-btn {
+    background-color: #dc3545; /* Color rojo */
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    /* margin-left: 20px; Añade espacio entre los botones */
+}
+
+/* Botones en general */
+button:hover {
+    opacity: 0.9;
+}
+
+
+button {
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#booksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    width: 80%;
+    /* gap: 20px; */
+}
+
+/* Estilos para las tarjetas de libros */
+.book-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;      /* Organiza los hijos verticalmente */
+    justify-content: space-between; 
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario de nuevos libros */
+dialog {
+    width: 80%;  /* Aumenta el ancho del cuadro de diálogo */
+    max-width: 500px; /* Establece un ancho máximo */
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"], input[type="button"] {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #0056b3;
+}
