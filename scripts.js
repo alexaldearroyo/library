@@ -17,6 +17,18 @@ Book.prototype.toggleReadStatus = function () {
 
 let library = [];
 
+
+function saveToLocalStorage() {
+  localStorage.setItem('library', JSON.stringify(library));
+}
+
+function loadFromLocalStorage() {
+  const savedLibrary = localStorage.getItem('library');
+  if (savedLibrary) {
+      library = JSON.parse(savedLibrary);
+  }
+}
+
 function displayBooks() {
   let container = document.getElementById("booksContainer");
   if (!container) {
@@ -92,6 +104,9 @@ function toggleReadStatus(event) {
   // Encuentra el elemento de estado de lectura y actualízalo
   let readStatusLabel = event.target.nextSibling; // Obtiene el elemento de texto que sigue al botón
   readStatusLabel.textContent = library[bookIndex].isRead ? "Read" : "Not read";
+
+  saveToLocalStorage(); // Guarda la biblioteca actualizada en localStorage
+
 }
 
 function removeBook(event) {
@@ -99,8 +114,15 @@ function removeBook(event) {
   library.splice(bookIndex, 1);
   let bookCard = event.target.closest("div");
   bookCard.remove();
+
+  saveToLocalStorage(); // Guarda la biblioteca actualizada en localStorage
+
 }
 
+// Cargamos la biblioteca desde localStorage al inicio
+loadFromLocalStorage();
+
+// Renderizamos la biblioteca
 displayBooks();
 
 document.getElementById("newBookBtn").addEventListener("click", function () {
@@ -123,6 +145,9 @@ document
 
     let newBook = new Book(title, author, numberOfPages, isRead);
     library.push(newBook);
+
+    saveToLocalStorage(); // Guarda la biblioteca actualizada en localStorage
+
 
     document.getElementById("bookFormDialog").close();
     displayBooks();
